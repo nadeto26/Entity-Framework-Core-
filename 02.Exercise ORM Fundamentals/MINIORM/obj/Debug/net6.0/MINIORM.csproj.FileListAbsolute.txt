@@ -1,5 +1,0 @@
-C:\Users\Admin\source\repos\MINIORM\MINIORM\obj\Debug\net6.0\MINIORM.csproj.AssemblyReference.cache
-C:\Users\Admin\source\repos\MINIORM\MINIORM\obj\Debug\net6.0\MINIORM.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Admin\source\repos\MINIORM\MINIORM\obj\Debug\net6.0\MINIORM.AssemblyInfoInputs.cache
-C:\Users\Admin\source\repos\MINIORM\MINIORM\obj\Debug\net6.0\MINIORM.AssemblyInfo.cs
-C:\Users\Admin\source\repos\MINIORM\MINIORM\obj\Debug\net6.0\MINIORM.csproj.CoreCompileInputs.cache
