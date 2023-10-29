@@ -33,7 +33,7 @@ namespace SoftUni.Data;
             if (!optionsBuilder.IsConfigured)
             {
  
-                optionsBuilder.UseSqlServer("Server=DESKTOP-EFFK5Q4;Database=SoftUni;Integrated Security=True; Encrypt= False;");
+                optionsBuilder.UseSqlServer("Server=./SQLEXPRESS;Database=SoftUni;Integrated Security=True; Encrypt= False;");
             }
         }
 
