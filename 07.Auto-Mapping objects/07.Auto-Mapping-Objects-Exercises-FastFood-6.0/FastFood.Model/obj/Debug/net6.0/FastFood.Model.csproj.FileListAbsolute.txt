@@ -1,0 +1,15 @@
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\bin\Debug\net6.0\FastFood.Model.deps.json
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\bin\Debug\net6.0\FastFood.Model.dll
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\bin\Debug\net6.0\FastFood.Model.pdb
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\bin\Debug\net6.0\FastFoodCommon.dll
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\bin\Debug\net6.0\FastFoodCommon.pdb
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.AssemblyInfoInputs.cache
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.AssemblyInfo.cs
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.csproj.CopyComplete
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.dll
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\refint\FastFood.Model.dll
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\FastFood.Model.pdb
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Model\obj\Debug\net6.0\ref\FastFood.Model.dll

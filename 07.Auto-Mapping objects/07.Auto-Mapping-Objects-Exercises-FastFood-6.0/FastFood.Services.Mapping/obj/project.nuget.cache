@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "gQnR2oIwZPnImvs2N7WgdTrg+s5ZJShjbZL6VpAHhHlcMqO2wowH8G1CIpUAy15A7EQXYtVQXW5Y89+r1Fr1AQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\Downloads\\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\\FastFood.Services.Mapping\\FastFood.Services.Mapping.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

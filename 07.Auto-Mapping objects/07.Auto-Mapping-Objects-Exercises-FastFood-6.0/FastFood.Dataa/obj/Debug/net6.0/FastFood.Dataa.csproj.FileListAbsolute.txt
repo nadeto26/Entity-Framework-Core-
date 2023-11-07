@@ -1,0 +1,5 @@
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Dataa\obj\Debug\net6.0\FastFood.Dataa.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Dataa\obj\Debug\net6.0\FastFood.Dataa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Dataa\obj\Debug\net6.0\FastFood.Dataa.AssemblyInfoInputs.cache
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Dataa\obj\Debug\net6.0\FastFood.Dataa.AssemblyInfo.cs
+C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Dataa\obj\Debug\net6.0\FastFood.Dataa.csproj.CoreCompileInputs.cache
