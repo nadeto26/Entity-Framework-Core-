@@ -1,8 +1,0 @@
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.csproj.AssemblyReference.cache
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.AssemblyInfoInputs.cache
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.AssemblyInfo.cs
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.RazorAssemblyInfo.cache
-C:\Users\Admin\Downloads\07.Auto-Mapping-Objects-Exercises-FastFood-6.0\FastFood.Core\obj\Debug\net6.0\FastFood.Web.RazorAssemblyInfo.cs
