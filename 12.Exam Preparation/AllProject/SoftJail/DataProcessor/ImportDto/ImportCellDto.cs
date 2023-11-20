@@ -1,0 +1,20 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace SoftJail.DataProcessor.ImportDto
+{
+    public class ImportCellDto
+    {
+        [Required]
+        [Range(1,100)]
+        [JsonProperty("CellNumber")]
+        public int CellNumber { get; set; }
+
+        [Required]
+        [JsonProperty("HasWindow")]
+        public bool HasWindow { get; set; }
+    }
+}
