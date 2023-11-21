@@ -36,7 +36,7 @@ namespace SoftJail.Data.Models
         public decimal? Bail { get; set; }
 
         [ForeignKey(nameof(Cell))]
-        public int? CellId  { get; set; }
+        public int? CeilId  { get; set; }
         public virtual Cell Cell    { get; set; }
 
         public virtual ICollection<Mail> Mails { get; set; }

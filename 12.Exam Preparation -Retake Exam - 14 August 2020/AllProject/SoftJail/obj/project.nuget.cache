@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "50uQ+5O2Q0ZT27GT2wJZdQK/TJO3gtUXRva8Gii/Ey7f+yzibm7nI4XcIkIMcXt9Y8WzNZCPd5a6JCzNLK2nWw==",
+  "dgSpecHash": "C4Suik2u/0f4zvsQDAPRGyAGiQNOIpfUUR5PZVqc036q74O9WRtwIVk3ZhwEdEvLEuAVD3ryHfHncz5omp+q+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\SoftJail_Skeleton\\SoftJail\\SoftJail.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Entity Gramework\\12.Exam Preparation -Retake Exam - 14 August 2020\\AllProject\\SoftJail\\SoftJail.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\7.0.1\\automapper.7.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

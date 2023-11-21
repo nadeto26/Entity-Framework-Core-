@@ -98,3 +98,10 @@ C:\Users\Admin\Downloads\01. Model Definition_Skeleton and Datasets (1)\01. Mode
 C:\Users\Admin\Downloads\01. Model Definition_Skeleton and Datasets (1)\01. Model Definition_Skeleton and Datasets (1)\SoftJail_Skeleton\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.dll
 C:\Users\Admin\Downloads\01. Model Definition_Skeleton and Datasets (1)\01. Model Definition_Skeleton and Datasets (1)\SoftJail_Skeleton\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.pdb
 C:\Users\Admin\Downloads\01. Model Definition_Skeleton and Datasets (1)\01. Model Definition_Skeleton and Datasets (1)\SoftJail_Skeleton\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Entity Gramework\12.Exam Preparation -Retake Exam - 14 August 2020\AllProject\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Entity Gramework\12.Exam Preparation -Retake Exam - 14 August 2020\AllProject\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Entity Gramework\12.Exam Preparation -Retake Exam - 14 August 2020\AllProject\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Entity Gramework\12.Exam Preparation -Retake Exam - 14 August 2020\AllProject\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Entity Gramework\12.Exam Preparation -Retake Exam - 14 August 2020\AllProject\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Entity Gramework\12.Exam Preparation -Retake Exam - 14 August 2020\AllProject\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.dll
+C:\Users\Admin\Desktop\Entity Gramework\12.Exam Preparation -Retake Exam - 14 August 2020\AllProject\SoftJail\obj\Debug\netcoreapp3.1\SoftJail.pdb

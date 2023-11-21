@@ -37,5 +37,10 @@ namespace SoftJail.Data.Models
         public virtual  Department Department { get; set; }
 
         public virtual ICollection<OfficerPrisoner>  OfficerPrisoners { get; set; }
+
+        public static implicit operator Officer(Officer v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
