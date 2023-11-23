@@ -22,11 +22,9 @@
 
             ExportClientDto[] clientDtos =
                 context.Clients
-                  .Include(c => c.Invoices)
-                .ThenInclude(ct => ct.Client)
-                .ToArray()
                 
-                .Where(c=>c.Invoices.Any(i=>i.IssueDate>date))
+                .ToArray()
+                .Where(c=>c.Invoices.Any(i=>i.IssueDate>=date))
                 .Select(c=>new ExportClientDto()
                 {
                     ClientName = c.Name,
@@ -40,7 +38,7 @@
                           CurrencyType = (CurrencyType)i.CurrencyType,
                           DueDate = i.DueDate.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)
                       })
-                      .OrderByDescending(i => i.DueDate)
+                      
                       .ToArray()
                 })
                 .OrderByDescending(c=>c.InvoicesCount)
@@ -56,10 +54,7 @@
         {
 
             var products = context.Products
-                .Include(c => c.ProductsClients)
-                .ThenInclude(ct => ct.Product)
-                 .ToArray()
-                 .Take(5)
+               .ToArray()
                .Where(pr => pr.ProductsClients.Any(pr => pr.Client.Name.Length >= nameLength))
               .Select(pr=>new
               {
@@ -68,6 +63,7 @@
                   Category = pr.CategoryType.ToString(),
                   Clients = pr.ProductsClients
                    .Where(pC => pC.Client.Name.Length >= nameLength)
+                   .ToArray()
                   .Select(pC=>new
                   {
                       Name = pC.Client.Name,
@@ -79,6 +75,7 @@
               })
               .OrderByDescending(p=>p.Clients.Count())
             .ThenBy(p=>p.Name)
+            .Take(5)
             .ToArray();
 
             return JsonConvert.SerializeObject(products, Formatting.Indented);

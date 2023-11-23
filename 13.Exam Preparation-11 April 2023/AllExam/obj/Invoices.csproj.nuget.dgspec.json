@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Downloads\\01-Model-Definition-Skeleton\\Invoices.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\Entity Gramework\\13.Exam Preparation-11 April 2023\\AllExam\\Invoices.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Downloads\\01-Model-Definition-Skeleton\\Invoices.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Entity Gramework\\13.Exam Preparation-11 April 2023\\AllExam\\Invoices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Downloads\\01-Model-Definition-Skeleton\\Invoices.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Entity Gramework\\13.Exam Preparation-11 April 2023\\AllExam\\Invoices.csproj",
         "projectName": "Invoices",
-        "projectPath": "C:\\Users\\Admin\\Downloads\\01-Model-Definition-Skeleton\\Invoices.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Entity Gramework\\13.Exam Preparation-11 April 2023\\AllExam\\Invoices.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Downloads\\01-Model-Definition-Skeleton\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Entity Gramework\\13.Exam Preparation-11 April 2023\\AllExam\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

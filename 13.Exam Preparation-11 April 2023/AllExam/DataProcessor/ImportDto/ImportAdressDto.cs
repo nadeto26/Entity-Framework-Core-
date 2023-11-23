@@ -1,39 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Xml.Serialization;
 
-namespace Invoices.Data.Models
+namespace Invoices.DataProcessor.ImportDto
 {
-    public class Address
+    [XmlType("Address")]
+    public class ImportAdressDto
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [MaxLength(20)]
+        [MinLength(10)]
+        [XmlElement("StreetName")]
         public string StreetName { get; set; } = null!;
 
         [Required]
+        [XmlElement("StreetNumber")]
         public int StreetNumber { get; set; }
 
         [Required]
+        [XmlElement("PostCode")]
         public string PostCode { get; set; } = null!;
 
         [Required]
         [MaxLength(15)]
+        [MinLength(5)]
+        [XmlElement("City")]
         public string City { get; set; } = null!;
 
         [Required]
         [MaxLength(15)]
+        [MinLength(5)]
+        [XmlElement("Country")]
         public string Country { get; set; } = null!;
 
-        [Required]
-        [ForeignKey(nameof(Client))]
-        public int ClientId { get; set; }
-
-        public virtual Client Client { get; set; } = null!;
+       
     }
 
 
