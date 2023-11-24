@@ -1,0 +1,34 @@
+Successfully import BAE Systems with London army personnel.
+Invalid data.
+Successfully import BAE with London army personnel.
+Successfully import Aviation Industry Corporation of China with 1951 army personnel.
+Successfully import General Dynamics with 1899 army personnel.
+Successfully import General Dynamics with 1899 army personnel.
+Successfully import Raytheon Technologies with Waltham army personnel.
+Successfully import Northrop Grumman with 2980 Fairview Park Drive army personnel.
+Successfully import Lockheed Martin with 1995 army personnel.
+Successfully import Izhmekh with 1942 army personnel.
+Invalid data.
+Successfully import IzhmekhInvalid with  army personnel.
+Invalid data.
+Successfully import IzhmekhInvalidManufacturerasdasdfsdfsdffsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfe with USSR July 20 army personnel.
+Successfully import Škoda with Kingdom of Bohemia army personnel.
+Successfully import BAE Systems with London army personnel.
+Successfully import Krupp with Essen army personnel.
+Successfully import Obukhov State Plant with Saint Petersburg army personnel.
+Invalid data.
+Successfully import Obukhov Plant Invalid with Saint Petersburg army personnel.
+Successfully import Putilov plant with 1801 army personnel.
+Successfully import Schneider et Cie with Schneider et Cie army personnel.
+Successfully import Colt's Manufacturing Company with Hartford army personnel.
+Successfully import Glock Ges.m.b.H. with Wien army personnel.
+Successfully import Almaz-Antey with Moscow army personnel.
+Successfully import Thales Group with Paris army personnel.
+Successfully import Leonardo S.p.A. with Rome army personnel.
+Successfully import Raytheon Technologies with Boston army personnel.
+Successfully import L3Harris Technologies with 2019 army personnel.
+Successfully import Norinco with Xicheng District army personnel.
+Invalid data.
+Successfully import  with 2002 army personnel.
+Successfully import China Electronics Technology Group with 2002 army personnel.
+Successfully import Putilov plant with 1801 army personnel.
