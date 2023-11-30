@@ -1,145 +1,185 @@
-﻿namespace Trucks.DataProcessor
+﻿namespace Invoices.DataProcessor
 {
+    using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     using System.Text;
-    using Data;
-    using Microsoft.EntityFrameworkCore.Diagnostics;
+    using System.Xml.Linq;
+    using Invoices.Data;
+    using Invoices.Data.Models;
+    using Invoices.Data.Models.Enums;
+    using Invoices.DataProcessor.ImportDto;
+    using Invoices.Utilities;
     using Newtonsoft.Json;
-    using Trucks.Data.Models;
-    using Trucks.Data.Models.Enums;
-    using Trucks.DataProcessor.ImportDto;
-    using Trucks.Utilities;
 
     public class Deserializer
     {
         private const string ErrorMessage = "Invalid data!";
-        private const string SuccessfullyImportedDespatcher
-            = "Successfully imported despatcher - {0} with {1} trucks.";
-        private const string SuccessfullyImportedClient
-            = "Successfully imported client - {0} with {1} trucks.";
+
+        private const string SuccessfullyImportedClients
+            = "Successfully imported client {0}.";
+
+        private const string SuccessfullyImportedInvoices
+            = "Successfully imported invoice with number {0}.";
+
+        private const string SuccessfullyImportedProducts
+            = "Successfully imported product - {0} with {1} clients.";
 
         private static XmlHelper xmlHelper;
-
-        
-
-        public static string ImportDespatcher(TrucksContext context, string xmlString)
+        public static string ImportClients(InvoicesContext context, string xmlString)
         {
             StringBuilder sb = new StringBuilder();
             xmlHelper = new XmlHelper();
 
-            ImportDespacheDto[] despatcharsDto =
-                xmlHelper.Deserialize<ImportDespacheDto[]>(xmlString, "Despatchers");
+            ImportClientDto[] cDtos = xmlHelper.Deserialize<ImportClientDto[]>(xmlString, "Clients");
 
-            ICollection<Despatcher> validDespecher = new HashSet<Despatcher>();
-            foreach(ImportDespacheDto desp in despatcharsDto)
+            ICollection<Client> validClients = new HashSet<Client>();
+
+            foreach (ImportClientDto cDto in cDtos)
             {
-                if(!IsValid(desp))
+                if(!IsValid(cDto))
                 {
                     sb.AppendLine(ErrorMessage);
                     continue;
                 }
 
-                ICollection<Truck> vaidTrucks = new HashSet<Truck>();
-                foreach(ImportTruckDto truckDto in desp.Trucks)
+                ICollection<Address> validAdreses = new HashSet<Address>();
+
+                foreach(ImportAdressDto aDto in cDto.Addresses)
                 {
-                    if(!IsValid(truckDto))
+                    if(!IsValid(aDto))
                     {
                         sb.AppendLine(ErrorMessage);
                         continue;
                     }
 
-                    Truck truck = new Truck()
+                    Address address = new Address()
                     {
-                        RegistrationNumber = truckDto.RegistrationNumber,
-                        VinNumber = truckDto.VinNumber,
-                        TankCapacity = truckDto.TankCapacity,
-                        CargoCapacity = truckDto.CargoCapacity,
-                        CategoryType = (CategoryType)truckDto.CategoryType,
-                        MakeType = (MakeType)truckDto.MakeType
+                        StreetName = aDto.StreetName,
+                        StreetNumber = aDto.StreetNumber,
+                        PostCode = aDto.PostCode,
+                        City = aDto.City,
+                        Country = aDto.Country
 
                     };
-                    vaidTrucks.Add(truck);
-                }
 
-                Despatcher despatcher = new Despatcher()
-                {
-                    Name = desp.Name,
-                    Position = desp.Position,
-                    Trucks = vaidTrucks
-                };
-                validDespecher.Add(despatcher);
-                sb.AppendLine(String.Format(SuccessfullyImportedDespatcher, despatcher.Name, validDespecher.Count()));
-            }
-            context.AddRange(validDespecher);
-            context.SaveChanges();
-            return sb.ToString().TrimEnd();
-        }
-
-        public static string ImportClient(TrucksContext context, string jsonString)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            ImportClientDto[] clientDtos=
-                JsonConvert.DeserializeObject < ImportClientDto[]>(jsonString);
-            //десериализираме към  масив от дто-та , защото имаме масив от дто -> това го виждаме от xml(docs)
-
-            ICollection<Client> validClients = new HashSet<Client>();
-            ICollection<int> excitingTrucks = context.Trucks
-                .Select(tc=> tc.Id)
-                .ToArray();  
-
-            foreach(ImportClientDto clientDto in clientDtos)
-            {
-                if(!IsValid(clientDto))
-                {
-                    sb.AppendLine(ErrorMessage);
-                    continue;
-                }
-                if(clientDto.Type == "usual")
-                {
-                    sb.AppendLine(ErrorMessage);
-                    continue;
+                    validAdreses.Add(address);
                 }
 
                 Client client = new Client()
                 {
-                    Name = clientDto.Name,
-                    Nationality = clientDto.Nationality,
-                    Type = clientDto.Type
-                    
-
+                    Name = cDto.Name,
+                    NumberVat = cDto.NumberVat,
+                    Addresses = validAdreses
                 };
 
-                foreach(int truckId in clientDto.TruckIds.Distinct()) //взимаме само уникалните 
+                validClients.Add(client);
+                sb.AppendLine(string.Format(SuccessfullyImportedClients, client.Name));
+            }
+            context.Clients.AddRange(validClients);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
+
+
+        }
+
+
+        public static string ImportInvoices(InvoicesContext context, string jsonString)
+        {
+            StringBuilder sb = new StringBuilder();
+            ImportInvoiceDto[] iDtos = JsonConvert.DeserializeObject<ImportInvoiceDto[]>(jsonString);
+
+            ICollection<Invoice> validInvoices = new HashSet<Invoice>();
+
+            foreach(ImportInvoiceDto iDto in iDtos)
+            {
+                if (!IsValid(iDto))
                 {
-                    if (!excitingTrucks.Contains(truckId))
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+                
+
+                Invoice invoice = new Invoice()
+                {
+                    Number = iDto.Number,
+                    IssueDate = iDto.IssueDate,
+                    DueDate = iDto.DueDate,
+                    Amount = iDto.Amount,
+                    CurrencyType = (CurrencyType)iDto.CurrencyType,
+                    ClientId = iDto.ClientId
+
+                };
+                validInvoices.Add(invoice);
+                sb.AppendLine(String.Format(SuccessfullyImportedInvoices,invoice.Number));
+            }
+            context.Invoices.AddRange(validInvoices);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string ImportProducts(InvoicesContext context, string jsonString)
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            ImportProductDto[] pDtos = JsonConvert.DeserializeObject<ImportProductDto[]>(jsonString);   
+
+            ICollection<Product> validProducts = new HashSet<Product>();
+            ICollection<int> existingProductsId = context.Products
+             .Select(t => t.Id)
+             .ToArray();
+
+            foreach (ImportProductDto pDto in pDtos)
+            {
+                if(!IsValid(pDto))
+                {
+                    sb.Append(ErrorMessage);
+                    continue;
+                }
+
+                Product product = new Product()
+                {
+                    Name = pDto.Name,
+                    Price = pDto.Price,
+                    CategoryType = (CategoryType)pDto.CategoryType
+
+                };
+                   
+                foreach(int clientId in pDto.ClientsIds.Distinct())
+                {
+                    if(!existingProductsId.Contains(clientId))
                     {
                         sb.AppendLine(ErrorMessage);
                         continue;
                     }
 
-                    ClientTruck ct = new ClientTruck()
+                    ProductClient productClient = new ProductClient()
                     {
-                        Client = client,
-                        TruckId = truckId
+                        Product = product,
+                        ClientId = clientId
                     };
-
-                    client.ClientsTrucks.Add(ct);
+                    product.ProductsClients.Add(productClient);
                 }
-                validClients.Add(client);
-                sb.AppendLine(string.Format(SuccessfullyImportedClient, client.Name, client.ClientsTrucks.Count));
+                validProducts.Add(product);
+                sb.AppendLine(string.Format(SuccessfullyImportedProducts, product.Name, product.ProductsClients.Count()));
             }
-            context.Clients.AddRange(validClients);
+            context.Products.AddRange(validProducts);
             context.SaveChanges();
+
             return sb.ToString().TrimEnd();
+
         }
 
-        private static bool IsValid(object dto)
+        public static bool IsValid(object dto)
         {
             var validationContext = new ValidationContext(dto);
             var validationResult = new List<ValidationResult>();
 
             return Validator.TryValidateObject(dto, validationContext, validationResult, true);
         }
-    }
+    } 
 }

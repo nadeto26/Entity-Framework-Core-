@@ -1,75 +1,87 @@
-﻿namespace Trucks.DataProcessor
+﻿namespace Invoices.DataProcessor
 {
-    using Data;
+    using Invoices.Data;
+    using Invoices.Data.Models;
+    using Invoices.Data.Models.Enums;
+    using Invoices.DataProcessor.ExportDto;
+    using Invoices.Utilities;
     using Microsoft.EntityFrameworkCore;
     using Newtonsoft.Json;
-    using Trucks.Data.Models.Enums;
-    using Trucks.DataProcessor.ExportDto;
-    using Trucks.Utilities;
+    using System;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Linq;
+    using System.Xml.Linq;
 
     public class Serializer
     {
         private static XmlHelper xmlHelper;
-        public static string ExportDespatchersWithTheirTrucks(TrucksContext context)
+        public static string ExportClientsWithTheirInvoices(InvoicesContext context, DateTime date)
         {
             xmlHelper = new XmlHelper();
-            ExportDespatcherDto[] despatchers = context
-                .Despatchers
-                .Where(d=>d.Trucks.Any())
-                .Select(d=> new ExportDespatcherDto()
+
+            ExportClientDto[] clientDtos =
+                context.Clients
+                  .Include(c => c.Invoices)
+                .ThenInclude(ct => ct.Client)
+                .ToArray()
+                
+                .Where(c=>c.Invoices.Any(i=>i.IssueDate>=date))
+                .Select(c=>new ExportClientDto()
                 {
-                    DespatcherName = d.Name,
-                    TrucksCount = d.Trucks.Count(),
-                    Trucks = d.Trucks
-                    .Select(t=> new ExportTruckDto()
-                    {
-                        RegistrationNumber = t.RegistrationNumber,
-                        Make = t.MakeType.ToString()
-                    })
-                     .OrderBy(t => t.RegistrationNumber)
-                        .ToArray()
+                    ClientName = c.Name,
+                    VatNumber = c.NumberVat,
+                    InvoicesCount = c.Invoices.Count,
+                    Invoices = c.Invoices
+                      .Select(i => new ExportInvoicesDto()
+                      {
+                          InvoiceNumber = i.Number,
+                          Amount = i.Amount.ToString("F2", CultureInfo.InvariantCulture),
+                          CurrencyType = (CurrencyType)i.CurrencyType,
+                          DueDate = i.DueDate.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)
+                      })
+                      .OrderByDescending(i => i.DueDate)
+                      .ToArray()
                 })
-                .OrderByDescending(d => d.TrucksCount)
-                .ThenBy(d => d.DespatcherName)
+                .OrderByDescending(c=>c.InvoicesCount)
+                .ThenBy(c=>c.ClientName)
                 .ToArray();
 
-            return xmlHelper.Serialize(despatchers, "Despatchers");
-      
-               
+
+            return xmlHelper.Serialize(clientDtos, "Clients");
+
         }
 
-        public static string ExportClientsWithMostTrucks(TrucksContext context, int capacity)
+        public static string ExportProductsWithMostClients(InvoicesContext context, int nameLength)
         {
-             var clients = context.Clients
-                .Include(c => c.ClientsTrucks)
-                .ThenInclude(ct => ct.Truck)
-                .AsNoTracking()
-                .ToArray()
-                .Where(c => c.ClientsTrucks.Any(ct => ct.Truck.TankCapacity >= capacity)) //пишем с any защото е колекция
-                .Select(c => new
-                {
-                    c.Name,
-                    Trucks = c.ClientsTrucks
-                        .Where(ct => ct.Truck.TankCapacity >= capacity)
-                        .Select(ct => new
-                        {
-                            TruckRegistrationNumber = ct.Truck.RegistrationNumber,
-                            VinNumber = ct.Truck.VinNumber,
-                            TankCapacity = ct.Truck.TankCapacity,
-                            CargoCapacity = ct.Truck.CargoCapacity,
-                            CategoryType = ct.Truck.CategoryType.ToString(),
-                            MakeType = ct.Truck.MakeType.ToString()
-                        })
-                        .OrderBy(t => t.MakeType)
-                        .ThenByDescending(t => t.CargoCapacity)
-                        .ToArray()
-                })
-                .OrderByDescending(c => c.Trucks.Length)
-                .ThenBy(c => c.Name)
-                .Take(10)
-                .ToArray();
 
-            return JsonConvert.SerializeObject(clients, Formatting.Indented);
+            var products = context.Products
+               .ToArray()
+               .Where(pr => pr.ProductsClients.Any(pr => pr.Client.Name.Length >= nameLength))
+              .Select(pr=>new
+              {
+                  Name = pr.Name,
+                  Price = pr.Price,
+                  Category = pr.CategoryType.ToString(),
+                  Clients = pr.ProductsClients
+                   .Where(pC => pC.Client.Name.Length >= nameLength)
+                   .ToArray()
+                  .Select(pC=>new
+                  {
+                      Name = pC.Client.Name,
+                      NumberVat = pC.Client.NumberVat
+                  })
+                  
+                  .OrderBy(p => p.Name)
+                  .ToArray()
+              })
+              .OrderByDescending(p=>p.Clients.Count())
+            .ThenBy(p=>p.Name)
+            .Take(5)
+            .ToArray();
+
+            return JsonConvert.SerializeObject(products, Formatting.Indented);
+
         }
     }
 }

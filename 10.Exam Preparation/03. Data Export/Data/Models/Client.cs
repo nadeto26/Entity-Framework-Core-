@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Trucks.Common;
 
-namespace Trucks.Data.Models
+namespace Invoices.Data.Models
 {
     public class Client
     {
         public Client()
         {
-            ClientsTrucks = new HashSet<ClientTruck>();
+            Invoices = new HashSet<Invoice>();
+            Addresses = new HashSet<Address>();
+            ProductsClients = new HashSet<ProductClient>();
         }
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(ValidationConstants.ClientNameMaxLength)]
-        public string Name { get; set; } = null!; // няма да има null стойности 
+        [MaxLength(25)]
+        public string Name { get; set; } = null!;
 
         [Required]
-        [MaxLength(ValidationConstants.ClientNationalityMaxLength)]
-        public string Nationality { get; set; } = null!;
+        [MaxLength(15)]
+        public string NumberVat { get; set; } = null!;
 
-        [Required]
-        public string Type { get; set; } = null!;
+        public virtual ICollection<Invoice> Invoices { get; set; } = null!;
 
-       public virtual ICollection<ClientTruck> ClientsTrucks { get; set; } = null!;
+        public virtual ICollection<Address> Addresses { get; set; } = null!;
+
+        public virtual ICollection<ProductClient> ProductsClients { get; set; } = null!;
     }
+
 }

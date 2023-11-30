@@ -4,13 +4,11 @@ using System.Text;
 
 namespace Invoices.Data.Models.Enums
 {
-    public enum CategoryType
+    public enum CurrencyType
     {
-        ADR, 
-        Filters, 
-        Lights, 
-        Others, 
-        Tyres
+        BGN,
+        EUR,
+        USD
 
     }
 }
