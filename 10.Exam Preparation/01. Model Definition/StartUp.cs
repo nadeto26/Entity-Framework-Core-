@@ -1,21 +1,21 @@
-﻿namespace Trucks
+﻿using Invoices.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Globalization;
+using System.IO;
+using AutoMapper;
+
+namespace Invoices
 {
-    using System;
-    using System.IO;
-    using System.Globalization;
-
-    using AutoMapper;
-    using Microsoft.EntityFrameworkCore;
-
-    using Data;
-
     public class StartUp
     {
         public static void Main()
         {
-            var context = new TrucksContext();
+            var context = new InvoicesContext();
 
-            ResetDatabase(context, shouldDropDatabase: false);
+			Mapper.Initialize(config => config.AddProfile<InvoicesProfile>());
+
+            ResetDatabase(context, shouldDropDatabase: true);
 
             var projectDir = GetProjectDirectory();
 
@@ -29,34 +29,38 @@
             }
         }
 
-        private static void ImportEntities(TrucksContext context, string baseDir, string exportDir)
+        private static void ImportEntities(InvoicesContext context, string baseDir, string exportDir)
         {
-            var despatchers =
-                DataProcessor.Deserializer.ImportDespatcher(context,
-                    File.ReadAllText(baseDir + "despatchers.xml"));
+            //var clients =
+            //    DataProcessor.Deserializer.ImportClients(context,
+            //        File.ReadAllText(baseDir + "clients.xml"));
+            //PrintAndExportEntityToFile(clients, exportDir + "Actual Result - ImportClients.txt");
 
-            PrintAndExportEntityToFile(despatchers, exportDir + "Actual Result - ImportDespatchers.txt");
+            //var invoices =
+            //    DataProcessor.Deserializer.ImportInvoices(context,
+            //        File.ReadAllText(baseDir + "invoices.json"));
+            //PrintAndExportEntityToFile(invoices, exportDir + "Actual Result - ImportInvoices.txt");
 
-            var clients =
-             DataProcessor.Deserializer.ImportClient(context,
-                 File.ReadAllText(baseDir + "clients.json"));
-
-            PrintAndExportEntityToFile(clients, exportDir + "Actual Result - ImportClients.txt");
+            //var products =
+            // DataProcessor.Deserializer.ImportProducts(context,
+            //     File.ReadAllText(baseDir + "products.json"));
+            //PrintAndExportEntityToFile(products, exportDir + "Actual Result - ImportProducts.txt");
         }
 
-        private static void ExportEntities(TrucksContext context, string exportDir)
+        private static void ExportEntities(InvoicesContext context, string exportDir)
         {
-            var ExportDespatchersWithTheirTrucks = DataProcessor.Serializer.ExportDespatchersWithTheirTrucks(context);
-            Console.WriteLine(ExportDespatchersWithTheirTrucks);
-            File.WriteAllText(exportDir + "Actual Result - ExportDespatchersWithTheirTrucks.xml", ExportDespatchersWithTheirTrucks);
+            DateTime date = DateTime.ParseExact("01/12/2022", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var exportClientsWithTheirInvoices = DataProcessor.Serializer.ExportClientsWithTheirInvoices(context, date);
+            Console.WriteLine(exportClientsWithTheirInvoices);
+            File.WriteAllText(exportDir + "Actual Result - ExportClientsWithTheirInvoices.xml", exportClientsWithTheirInvoices);
 
-            int tankCapacity = 1000;
-            var ExportClientsWithMostTrucks = DataProcessor.Serializer.ExportClientsWithMostTrucks(context, tankCapacity);
-            Console.WriteLine(ExportClientsWithMostTrucks);
-            File.WriteAllText(exportDir + "Actual Result - ExportClientsWithMostTrucks.json", ExportClientsWithMostTrucks);
+            var nameLength = 11;
+            var exportProductsWithMostClients = DataProcessor.Serializer.ExportProductsWithMostClients(context, nameLength);
+            Console.WriteLine(exportProductsWithMostClients);
+            File.WriteAllText(exportDir + "Actual Result - ExportProductsWithMostClients.json", exportProductsWithMostClients);
         }
 
-        private static void ResetDatabase(TrucksContext context, bool shouldDropDatabase = false)
+        private static void ResetDatabase(InvoicesContext context, bool shouldDropDatabase = false)
         {
             if (shouldDropDatabase)
             {
@@ -93,7 +97,7 @@
         {
             var currentDirectory = Directory.GetCurrentDirectory();
             var directoryName = Path.GetFileName(currentDirectory);
-            var relativePath = directoryName.StartsWith("net6.0") ? @"../../../" : string.Empty;
+            var relativePath = directoryName.StartsWith("netcoreapp") ? @"../../../" : string.Empty;
 
             return relativePath;
         }
