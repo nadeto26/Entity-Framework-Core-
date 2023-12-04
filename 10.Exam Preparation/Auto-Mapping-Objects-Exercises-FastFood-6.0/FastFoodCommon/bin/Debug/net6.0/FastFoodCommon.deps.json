@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "FastFoodCommon/1.0.0": {
+        "runtime": {
+          "FastFoodCommon.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FastFoodCommon/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
