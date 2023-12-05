@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DuhGHZViSSilL35mUYj2YnNblxHT6dHnSiY4DhZSAS0DnYp6n4dYAjAi1PBFwR8hEZBSupe6Xt/VbZPSJh6d2g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\Downloads\\10.Best-Practices-and-Architecture-Exercise-PetStore (1)\\PetStore\\PetStore.Services.Mapping\\PetStore.Services.Mapping.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
